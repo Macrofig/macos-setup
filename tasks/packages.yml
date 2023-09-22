@@ -1,0 +1,107 @@
+---
+- name: Install MacOS Packages
+  hosts: localhost
+  become: false
+  vars:
+    brew_cask_packages:
+      - 1password
+      - slack
+      - obsidian
+      - alfred
+      - firefox
+      - grammarly
+      - itsycal
+      - vlc
+      - vnc-viewer
+      - authy
+      - postman
+      - bartender
+      - visual-studio-code
+      - speedify
+      - synology-drive
+      - discord
+      - ankerwork
+      - zoom
+    brew_packages:
+      - flux
+      - switchaudio-osx
+      - nvm
+      - docker
+    # See `geerlingguy.mas` role documentation for usage instructions.
+    mas_email: ""
+    mas_password: ""
+    mas_installed_apps:
+      - { id: 441258766, name: "Magnet"}
+      - { id: 424389933, name: "Final Cut Pro"}
+      - { id: 288419283, name: "RadarScope"}
+      - { id: 1136220934, name: "Infuse • Video Player"}
+      - { id: 1616822987, name: "Affinity Photo 2"}
+      - { id: 1616831348, name: "Affinity Designer 2"}
+      - { id: 1423210932, name: "Flow - Focus & Pomodoro Timer"}
+      - { id: 1147396723, name: "WhatsApp Desktop"}
+    mas_uninstalled_apps:
+      - { id: 408981434, name: "iMovie" }
+      - { id: 682658836, name: "GarageBand" }      
+    install_homebrew_if_missing: false
+    upgrade_homebrew_packages: false
+
+    # Set to 'true' to configure the Dock via dockutil.
+    configure_dock: false
+    dockitems_remove: []
+    # - Launchpad
+    # - TV
+    # - Podcasts
+    # - 'App Store'
+    dockitems_persist: 
+      - name: Messages
+        path: "/Applications/Messages.app/"
+        pos: 1
+      - name: Mail
+        path: "/Applications/Mail.app/"
+        pos: 2
+      - name: Calendar
+        path: "/Applications/Calendar.app/"
+        pos: 3
+      - name: Firefox
+        path: "/Applications/Firefox.app/"
+        pos: 4
+      - name: Things
+        path: "/Applications/Things.app/"
+        pos: 5
+      - name: Visual Studio Code
+        path: "/Applications/Visual Studio Code.app/"
+        pos: 6
+      - name: Obsidian
+        path: "/Applications/Obsidian.app/"
+        pos: 6
+  pre_tasks:
+    - name: Ensuring Homebrew Is Installed
+      stat:
+        path: /opt/homebrew/bin/brew
+      register: homebrew_check
+
+    - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+      fail:
+        msg: Homebrew is missing...Install from http://brew.sh/
+      when:
+        - not homebrew_check.stat.exists
+        - not install_homebrew_if_missing
+
+    - name: Installing Homebrew
+      shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      when:
+        - not homebrew_check.stat.exists
+        - install_homebrew_if_missing
+  roles:
+    - geerlingguy.mac.homebrew
+    - geerlingguy.mac.mas
+  tasks:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    - role: geerlingguy.mac.mas
+      when: mas_installed_apps or mas_installed_app_ids
+      tags: ['mas']
+    - role: geerlingguy.mac.dock
+      when: configure_dock
+      tags: ['dock']

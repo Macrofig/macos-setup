@@ -1,0 +1,81 @@
+---
+brew_cask_packages:
+  - 1password
+  - slack
+  - obsidian
+  - alfred
+  - firefox
+  - grammarly
+  - itsycal
+  - vlc
+  - vnc-viewer
+  - authy
+  - postman
+  - bartender
+  - visual-studio-code
+  - speedify
+  - synology-drive
+  - discord
+  - ankerwork
+  - zoom
+brew_packages:
+  - flux
+  - switchaudio-osx
+  - nvm
+  - docker
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_email: ""
+mas_password: ""
+mas_installed_apps:
+  - { id: 441258766, name: "Magnet"}
+  - { id: 424389933, name: "Final Cut Pro"}
+  - { id: 288419283, name: "RadarScope"}
+  - { id: 1136220934, name: "Infuse • Video Player"}
+  - { id: 1616822987, name: "Affinity Photo 2"}
+  # - { id: 1616831348, name: "Affinity Designer 2"}
+  - { id: 1423210932, name: "Flow - Focus & Pomodoro Timer"}
+  - { id: 1147396723, name: "WhatsApp Desktop"}
+mas_uninstalled_apps: []
+  # - { id: 408981434, name: "iMovie" }
+  # - { id: 682658836, name: "GarageBand" }      
+install_homebrew_if_missing: false
+upgrade_homebrew_packages: false
+
+configure_dock: true
+dockitems_remove: []
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+dockutil_homebrew_cask: hpedrorodrigues/tools/dockutil
+dockitems_persist: 
+  - name: Messages
+    path: "/Applications/Messages.app/"
+    pos: 1
+  - name: Mail
+    path: "/Applications/Mail.app/"
+    pos: 2
+  - name: Calendar
+    path: "/Applications/Calendar.app/"
+    pos: 3
+  - name: Firefox
+    path: "/Applications/Firefox.app/"
+    pos: 4
+  - name: Things
+    path: "/Applications/Things.app/"
+    pos: 5
+  - name: Visual Studio Code
+    path: "/Applications/Visual Studio Code.app/"
+    pos: 6
+  - name: Obsidian
+    path: "/Applications/Obsidian.app/"
+    pos: 7
+  - name: Slack
+    path: "/Applications/Slack.app/"
+    pos: 8
+  - name: Zoom
+    path: "/Applications/Zoom.app/"
+    pos: 9
+  - name: Terminal
+    path: "/Applications/Utilities/Terminal.app/"
+    pos: 10
