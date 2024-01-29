@@ -2,18 +2,29 @@
 
 Ideally, this can be executed from another machine.
 
+`ansible-playbook main.yml --ask-become-pass`
+
 ## Packages
 
-TODOS:
-- Handle packages that are already installed
-- Handle packages that require a password
-- Add Mac App Store
-
+Populate `secrets.yml` with appropriate details
 
 ## Dock
 
 https://github.com/feffi/ansible-macos-dock
 https://galaxy.ansible.com/danbohea/macos-dock
 
-## Host
+TODO:
+- Clear all items from dock
+- Minimize windows into application icon: On
+- Show recent applications in Dock: Off
 
+## System
+
+- set hostname
+- filesystem
+- Finder
+
+## Config
+
+- ssh keys
+- git

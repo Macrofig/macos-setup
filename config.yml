@@ -1,4 +1,6 @@
 ---
+install_homebrew_if_missing: true
+upgrade_homebrew_packages: true
 brew_cask_packages:
   - 1password
   - slack
@@ -18,28 +20,38 @@ brew_cask_packages:
   - discord
   - ankerwork
   - zoom
+  - raspberry-pi-imager
+  - autodesk-fusion360
+  - prusaslicer
+  - balenaetcher
+  - openscad
+  - makemkv
+  - ultimaker-cura
+  - sublime-text
+  - drawio
+  - warp
 brew_packages:
   - flux
   - switchaudio-osx
   - nvm
   - docker
-# See `geerlingguy.mas` role documentation for usage instructions.
+  - oath-toolkit
 mas_email: ""
 mas_password: ""
 mas_installed_apps:
-  - { id: 441258766, name: "Magnet"}
-  - { id: 424389933, name: "Final Cut Pro"}
-  - { id: 288419283, name: "RadarScope"}
-  - { id: 1136220934, name: "Infuse • Video Player"}
-  - { id: 1616822987, name: "Affinity Photo 2"}
+  - { id: 441258766, name: "Magnet" }
+  - { id: 424389933, name: "Final Cut Pro" }
+  - { id: 288419283, name: "RadarScope" }
+  - { id: 1136220934, name: "Infuse • Video Player" }
+  - { id: 1616822987, name: "Affinity Photo 2" }
   # - { id: 1616831348, name: "Affinity Designer 2"}
-  - { id: 1423210932, name: "Flow - Focus & Pomodoro Timer"}
-  - { id: 1147396723, name: "WhatsApp Desktop"}
-mas_uninstalled_apps: []
+  - { id: 1423210932, name: "Flow - Focus & Pomodoro Timer" }
+  - { id: 1147396723, name: "WhatsApp Desktop" }
+  - { id: 937984704, name: "Amphetamine" }
+mas_uninstalled_apps:
+  []
   # - { id: 408981434, name: "iMovie" }
-  # - { id: 682658836, name: "GarageBand" }      
-install_homebrew_if_missing: false
-upgrade_homebrew_packages: false
+  # - { id: 682658836, name: "GarageBand" }
 
 configure_dock: true
 dockitems_remove: []
@@ -48,7 +60,7 @@ dockitems_remove: []
 # - Podcasts
 # - 'App Store'
 dockutil_homebrew_cask: hpedrorodrigues/tools/dockutil
-dockitems_persist: 
+dockitems_persist:
   - name: Messages
     path: "/Applications/Messages.app/"
     pos: 1
@@ -73,8 +85,8 @@ dockitems_persist:
   - name: Slack
     path: "/Applications/Slack.app/"
     pos: 8
-  - name: Zoom
-    path: "/Applications/Zoom.app/"
+  - name: zoom.us
+    path: "/Applications/zoom.us.app/"
     pos: 9
   - name: Terminal
     path: "/Applications/Utilities/Terminal.app/"
